@@ -1,9 +1,12 @@
 FROM alpine:3.12
+RUN adduser keuclide
+# RUN echo "admin\nadmin" | passwd keuclide
 
 #services
 RUN apk update && \
     apk add nginx && \
-    apk add openssl
+    apk add openssl && \
+    apk add --no-cache openssh
 
 COPY /nginx.conf /etc/nginx/conf.d/default.conf
 
@@ -17,4 +20,6 @@ WORKDIR /
 COPY run.sh .
 RUN chmod +x run.sh
 RUN mkdir -p /run/nginx
+EXPOSE 80 443
+EXPOSE 22
 CMD sh run.sh
