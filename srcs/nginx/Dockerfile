@@ -5,7 +5,7 @@ RUN apk update && \
     apk add openssl && \
     apk add openssh
 
-COPY /nginx.conf /etc/nginx/conf.d/default.conf
+COPY /my.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /etc/nginx/ssl/
 RUN openssl req -newkey rsa:4096 -x509 -sha256 \
@@ -13,7 +13,7 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 \
     -subj "/C=RU/ST=Tatarstan/L=Kazan/O=Ecole 42/OU=Ignis/CN=localhost"
 
 WORKDIR /
-COPY run.sh .
+COPY run.sh /
 RUN chmod +x run.sh
 RUN mkdir -p /run/nginx
 EXPOSE 80 443 22

@@ -1,26 +1,17 @@
 FROM alpine:3.12
 
-#services
 RUN apk update && \
-    apk add nginx && \
-    apk add openssl && \
-    apk add openssh
+    apk add wget php7 php7-mysqli php-fpm php-pdo php-gd php-cli php-mbstring
 
-RUN adduser keuclide
-RUN echo "admin\nadmin" | passwd keuclide
+WORKDIR /var/www/
+RUN wget https://wordpress.org/latest.tar.gz && \
+    tar -xvf latest.tar.gz && \
+    rm -rf latest.tar.gz
 
-COPY /nginx.conf /etc/nginx/conf.d/default.conf
-
-#openssl
-WORKDIR /etc/nginx/ssl/
-RUN openssl req -newkey rsa:4096 -x509 -sha256 \
-    -days 1 -nodes -out crt.crt -keyout key.key \
-    -subj "/C=RU/ST=Tatarstan/L=Kazan/O=Ecole 42/OU=Ignis/CN=localhost"
+COPY wp-config.php /var/www/wordpress/
 
 WORKDIR /
-COPY run.sh .
+COPY run.sh /
+EXPOSE 5050
 RUN chmod +x run.sh
-RUN mkdir -p /run/nginx
-EXPOSE 80 443
-EXPOSE 22
 CMD sh run.sh
