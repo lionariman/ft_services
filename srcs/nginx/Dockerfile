@@ -16,5 +16,7 @@ WORKDIR /
 COPY run.sh /
 RUN chmod +x run.sh
 RUN mkdir -p /run/nginx
-EXPOSE 80 443 22
+EXPOSE 80/tcp
+EXPOSE 443/tcp
+EXPOSE 22/tcp
 CMD sh run.sh

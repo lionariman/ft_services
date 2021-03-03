@@ -12,10 +12,14 @@ eval $(minikube docker-env)
 echo "docker builds"
 docker build -t nginx-image srcs/nginx/
 docker build -t wordpress-image srcs/wordpress/
+docker build -t phpmyadmin-image srcs/phpmyadmin/
+docker build -t mysql-image srcs/mysql/
 
 echo "apply yamls"
 kubectl apply -f srcs/nginx/nginx.yaml
 kubectl apply -f srcs/wordpress/wordpress.yaml
+kubectl apply -f srcs/phpmyadmin/phpmyadmin.yaml
+kubectl apply -f srcs/mysql/mysql.yaml
 #-------------------------------------------
 
 echo "enable metallb and dashboard"

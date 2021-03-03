@@ -12,6 +12,6 @@ COPY wp-config.php /var/www/wordpress/
 
 WORKDIR /
 COPY run.sh /
-EXPOSE 5050
 RUN chmod +x run.sh
+EXPOSE 5050/tcp
 CMD sh run.sh
