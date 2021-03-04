@@ -32,3 +32,5 @@ kubectl apply -f srcs/confmap.yaml
 
 kubectl get pods
 minikube dashboard
+
+# kubectl delete -f srcs/nginx/nginx.yaml

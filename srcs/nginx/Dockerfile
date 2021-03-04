@@ -1,11 +1,16 @@
 FROM alpine:3.12
 
 RUN apk update && \
-    apk add nginx && \
-    apk add openssl && \
-    apk add openssh
+    apk upgrade && \
+    apk add nginx openssl openssh supervisor
 
-COPY /my.conf /etc/nginx/conf.d/default.conf
+RUN adduser -D -g 'www' www
+RUN mkdir /www
+RUN chown -R www:www /var/lib/nginx
+RUN chown -R www:www /www
+
+COPY my.conf /etc/nginx/nginx.conf
+COPY supervisor.conf /etc/supervisor.conf
 
 WORKDIR /etc/nginx/ssl/
 RUN openssl req -newkey rsa:4096 -x509 -sha256 \
