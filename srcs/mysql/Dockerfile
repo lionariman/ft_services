@@ -4,5 +4,6 @@ RUN apk update && \
     apk add mariadb mariadb-client
 
 WORKDIR /etc/sql/
-COPY wordpress.sql /etc/sql/
-COPY phpmyadmin.sql /etc/sql/
+COPY database.sql /etc/sql/
+
+EXPOSE 3306/tcp
