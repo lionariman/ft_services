@@ -1,1 +1,3 @@
-mysql > CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE wordpress_db;
+GRANT ALL ON wordpress.* TO 'wordpress'@'%' IDENTIFIED BY 'admin' WITH GRANT OPTION;
+FLUSH PRIVILEGES;

@@ -1,9 +1,12 @@
 FROM alpine:3.12
 
-RUN apk update && \
-    apk add mariadb mariadb-client
+RUN apk update && apk upgrade && \
+    apk add mysql mysql-client && \
+    apk add openrc
 
-WORKDIR /etc/sql/
-COPY database.sql /etc/sql/
+COPY my.cnf /etc/my.cnf
+COPY database.sql /
 
-EXPOSE 3306/tcp
+COPY run.sh /
+EXPOSE 3306
+CMD sh run.sh

@@ -3,7 +3,7 @@ FROM alpine:3.12
 RUN apk update && \
     apk upgrade && \
     mkdir -p /run/nginx && \
-    apk add wget openssl nginx php7 php7-mysqli php-fpm php-pdo php-gd php-cli php-mbstring
+    apk add wget nginx php7 php7-mysqli php-fpm php-pdo php-gd php-cli php-mbstring
 
 WORKDIR /var/www/
 RUN wget https://wordpress.org/latest.tar.gz && \
