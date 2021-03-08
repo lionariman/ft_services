@@ -26,7 +26,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/data"
+    path: "/mnt/data"
 
 ---
 
@@ -61,9 +61,16 @@ spec:
       labels:
         app: mysql
     spec:
+      volumes:
+      - name: mysql-pv
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
       containers:
       - name: mysql
         image: mysql-image
         imagePullPolicy: Never
         ports:
         - containerPort: 3306
+        volumeMounts:
+        - name: mysql-pv
+          mountPath: /var/lib/mysql

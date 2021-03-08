@@ -1,7 +1,5 @@
 #!/bin/sh
 
-mkdir -p /var/lib/mysql
-mkdir -p /run/mysqld
 openrc default
 mysql_install_db
 rc-service mariadb start
@@ -10,8 +8,8 @@ rc-service mariadb start
 mysql < /database.sql
 # mysql wordpress < database.sql
 
-rc-service mariadb stop
+# rc-service mariadb stop
 
-/usr/bin/mysqld --datadir=/var/lib/mysql --socket=/run/mysqld/mysqld.sock
+#/usr/bin/supervisord -c /etc/supervisor.conf
 
-# tail -f /dev/null
+# sleep infinity

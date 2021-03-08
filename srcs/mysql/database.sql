@@ -1,3 +1,4 @@
 CREATE DATABASE wordpress_db;
-GRANT ALL ON wordpress.* TO 'wordpress'@'%' IDENTIFIED BY 'admin' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON wordpress_db.* TO 'admin'@'%' identified by 'admin' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
+EXIT

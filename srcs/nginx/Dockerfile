@@ -4,12 +4,10 @@ RUN apk update && \
     mkdir -p /run/nginx && \
     apk add nginx openssl openssh supervisor
 
-#???
-RUN adduser -D 'www' -g www
-RUN mkdir /www
-RUN chown -R www:www /var/lib/nginx
-RUN chown -R www:www /www
-# RUN chown -R nginx:nginx /var/www/
+# RUN adduser -D www -g www
+# RUN mkdir /www
+# RUN chown -R www:www /var/lib/nginx
+# RUN chown -R www:www /www
 
 WORKDIR /etc/nginx/ssl/
 RUN openssl req -newkey rsa:4096 -x509 -sha256 \
