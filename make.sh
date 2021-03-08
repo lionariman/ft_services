@@ -1,5 +1,9 @@
 eval $(minikube docker-env)
-./delete.sh
-./build.sh
-./apply.sh
+./nginx.sh
+./wordpress.sh
+./phpmyadmin.sh
+./mysql.sh
+# ./ftps.sh
+# ./grafana.sh
+# ./influxdb.sh
 #minikube dashboard

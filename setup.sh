@@ -3,7 +3,7 @@ minikube stop
 minikube delete
 
 echo "create cluster"
-minikube start --vm-driver=virtualbox --memory 4096
+minikube start --vm-driver=virtualbox --memory=4G --cpus=4
 
 echo "swith docker to work inside the cluster"
 eval $(minikube docker-env)

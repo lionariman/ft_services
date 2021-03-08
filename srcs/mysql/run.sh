@@ -6,10 +6,10 @@ rc-service mariadb start
 
 # create new database, create user, grant priveleges
 mysql < /database.sql
-# mysql wordpress < database.sql
+# mysql wordpress < ./wordpress.sql
 
-# rc-service mariadb stop
+rc-service mariadb stop
 
-#/usr/bin/supervisord -c /etc/supervisor.conf
+/usr/bin/supervisord -c /etc/supervisor.conf
 
 # sleep infinity
