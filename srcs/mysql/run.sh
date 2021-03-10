@@ -10,6 +10,6 @@ mysql < /database.sql
 
 rc-service mariadb stop
 
-/usr/bin/supervisord -c /etc/supervisor.conf
+/usr/bin/supervisord -c /etc/supervisord.conf
 
 # sleep infinity

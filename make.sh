@@ -1,4 +1,5 @@
 eval $(minikube docker-env)
+echo y | docker image prune
 ./nginx.sh
 ./wordpress.sh
 ./phpmyadmin.sh
