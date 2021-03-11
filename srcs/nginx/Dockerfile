@@ -2,7 +2,7 @@ FROM alpine:3.12
 
 RUN apk update && \
     mkdir -p /run/nginx && \
-    apk add nginx openssl openssh supervisor
+    apk add nginx openssl supervisor
 
 RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY ./my.conf /etc/nginx/conf.d/default.conf
