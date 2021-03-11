@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# rc update
-# rc default
-# rc-service php-fpm7 start
+# apk add vsftpd
+# rc-update add vsftpd default
 
 /usr/bin/supervisord -c /etc/supervisord.conf
