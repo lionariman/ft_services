@@ -13,10 +13,6 @@ spec:
       port: 21
       name: ftps
       targetPort: 21
-    - protocol: TCP
-      port: 20
-      name: ftps
-      targetPort: 20
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -40,4 +36,3 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 21
-        - containerPort: 20

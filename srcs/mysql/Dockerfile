@@ -6,10 +6,11 @@ RUN apk update upgrade && \
     apk add mysql mysql-client supervisor openrc
 
 COPY ./my.cnf /etc/my.cnf
-COPY ./database.sql /
+COPY ./database.sql ./
+COPY ./wordpress_db.sql ./
 COPY ./supervisord.conf /etc/supervisord.conf
 
-COPY run.sh /
+COPY run.sh ./
 
 EXPOSE 3306
 

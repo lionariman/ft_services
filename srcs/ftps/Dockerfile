@@ -16,9 +16,8 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 \
 
 WORKDIR /
 COPY ./run.sh ./
-
-EXPOSE 21/tcp
-
 RUN chmod +x run.sh
-# CMD sh run.sh
-CMD sleep infinity
+
+EXPOSE 21
+
+CMD sh run.sh
