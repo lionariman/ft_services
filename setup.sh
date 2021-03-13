@@ -8,6 +8,7 @@ minikube start --vm-driver=virtualbox --memory=4G --cpus=3
 echo "switch docker to work inside the cluster"
 eval $(minikube docker-env)
 
+
 #---------------create-pods-----------------
 echo "docker builds"
 docker build -t nginx-image srcs/nginx/

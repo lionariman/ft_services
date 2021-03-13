@@ -4,6 +4,7 @@ metadata:
   name: mysql-svc
 spec:
   type: ClusterIP
+  clusterIP: 10.99.05.05
   selector:
     app: mysql
   ports:

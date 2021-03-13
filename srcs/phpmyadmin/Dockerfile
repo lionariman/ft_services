@@ -2,7 +2,8 @@ FROM alpine:3.12
 
 RUN apk update && \
     mkdir -p /run/nginx && \
-    apk add wget nginx openssl supervisor php7 php7-mysqli php7-fpm php-pdo php-gd php-cli php-mbstring
+    apk add wget nginx openssl supervisor php7 php-pdo php-gd php-cli php7-fpm php7-mysqli \
+    php7-xml php7-simplexml php7-json php7-iconv php7-tokenizer php7-xmlwriter php7-session php7-mbstring
 
 RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY ./my.conf /etc/nginx/conf.d/default.conf
@@ -13,7 +14,7 @@ RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.
     tar -xvf phpMyAdmin-5.0.4-english.tar.gz && \
     rm -rf phpMyAdmin-5.0.4-english.tar.gz && \
     mv phpMyAdmin-5.0.4-english phpmyadmin
-COPY config.inc.php /var/www/
+COPY config.inc.php /var/www/phpmyadmin
 
 WORKDIR /etc/nginx/ssl/
 RUN openssl req -newkey rsa:4096 -x509 -sha256 \
@@ -22,6 +23,8 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 \
 
 WORKDIR /
 COPY ./run.sh ./
-EXPOSE 5000/tcp
+
+EXPOSE 5000
+
 RUN chmod +x run.sh
 CMD sh run.sh
