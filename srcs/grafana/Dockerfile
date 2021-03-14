@@ -1,7 +1,10 @@
 FROM alpine:3.12
 
 RUN apk update && \
-    apk add mysql mysql-client supervisor openrc
+    apk add mysql mysql-client supervisor openrc && \
+    apk add telegraf --repository http://dl-2.alpinelinux.org/alpine/edge/community --allow-untrusted --no-cache
+
+COPY ./telegraf.conf /etc/
 
 WORKDIR /var/www/
 RUN wget https://dl.grafana.com/enterprise/release/grafana-enterprise-7.3.7.linux-amd64.tar.gz && \

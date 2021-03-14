@@ -1,13 +1,15 @@
 FROM alpine:3.12
 
 RUN apk update && \
-    apk add wget supervisor vsftpd openssl openrc
+    apk add wget supervisor vsftpd openssl openrc && \
+    apk add telegraf --repository http://dl-2.alpinelinux.org/alpine/edge/community --allow-untrusted --no-cache
 
 RUN adduser -D new_user
 RUN echo -e "1234abcd\n1234abcd" | passwd new_user
 
 COPY ./supervisord.conf /etc/supervisord.conf
 COPY ./vsftpd.conf /etc/vsftpd/vsftpd.conf
+COPY ./telegraf.conf /etc/
 
 WORKDIR /etc/ssl/
 RUN openssl req -newkey rsa:4096 -x509 -sha256 \
