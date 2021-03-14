@@ -1,8 +1,9 @@
 FROM alpine:3.12
 
+RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+
 RUN apk update && \
-    apk add wget supervisor vsftpd openssl openrc && \
-    apk add telegraf --repository http://dl-2.alpinelinux.org/alpine/edge/community --allow-untrusted --no-cache
+    apk add wget supervisor vsftpd openssl openrc telegraf
 
 RUN adduser -D new_user
 RUN echo -e "1234abcd\n1234abcd" | passwd new_user
