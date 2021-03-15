@@ -1,6 +1,6 @@
 #!/bin/sh
 
-openrc default
+# openrc default
 mysql_install_db
 rc-service mariadb start
 mysql < database.sql

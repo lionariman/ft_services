@@ -7,6 +7,8 @@ RUN apk update && \
 
 COPY ./supervisord.conf /etc/supervisord.conf
 COPY ./telegraf.conf /etc/
+COPY ./grafana.ini /etc/
+# COPY ./grafana.db /usr/share/grafana/data/
 COPY run.sh ./
 RUN chmod +x run.sh
 
