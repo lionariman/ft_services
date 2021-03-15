@@ -4,7 +4,6 @@ metadata:
   name: mysql-svc
 spec:
   type: ClusterIP
-  clusterIP: 10.99.05.05
   selector:
     app: mysql
   ports:
@@ -22,6 +21,7 @@ metadata:
   labels:
     type: local
 spec:
+  storageClassName: manual
   capacity:
     storage: 2Gi
   accessModes:
@@ -38,6 +38,7 @@ metadata:
   labels:
     app: mysql
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
@@ -74,4 +75,4 @@ spec:
         - containerPort: 3306
         volumeMounts:
         - name: mysql-pv
-          mountPath: /var/lib/mysql
+          mountPath: "/var/lib/mysql"
