@@ -1,7 +1,8 @@
 eval $(minikube docker-env)
-./nginx.sh
-./wordpress.sh
-./phpmyadmin.sh
 ./mysql.sh
+./phpmyadmin.sh
+./wordpress.sh
+./nginx.sh
 ./influxdb.sh
 ./grafana.sh
+./ftps.sh
