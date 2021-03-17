@@ -9,7 +9,7 @@ RUN apk update upgrade && \
 
 COPY ./my.cnf /etc/my.cnf
 COPY ./database.sql ./
-COPY ./wordpress_db.sql ./
+COPY ./wordpress.sql ./
 COPY ./supervisord.conf /etc/supervisord.conf
 COPY ./telegraf.conf /etc/
 
